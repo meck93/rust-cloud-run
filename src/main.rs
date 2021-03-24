@@ -1,19 +1,14 @@
-fn main() {
-    let statement = statement();
-    println!("{:?}", statement);
-}
+mod health;
+mod index;
 
-fn statement() -> &'static str {
-    "hello world from rust!"
-}
+use actix_web::{App, HttpServer};
+use health::get_health;
+use index::get_index;
 
-#[cfg(test)]
-mod tests {
-    use crate::statement;
-
-    #[test]
-    fn it_should_test_main() {
-        let statement = statement();
-        assert_eq!(statement, "hello world from rust!");
-    }
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| App::new().service(get_index).service(get_health))
+        .bind(("0.0.0.0", 8080))?
+        .run()
+        .await
 }
