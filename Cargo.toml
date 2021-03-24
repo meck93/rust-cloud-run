@@ -4,4 +4,8 @@ version = "0.1.0"
 authors = ["Moritz Eck <moritz.eck@gmail.com>"]
 edition = "2018"
 
+[[bin]]
+name = "runner"
+path = "src/main.rs"
+
 [dependencies]
