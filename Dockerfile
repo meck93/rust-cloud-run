@@ -25,6 +25,8 @@ COPY ./Cargo.toml ./Cargo.toml
 
 # Caching Dependencies
 RUN cargo build --target x86_64-unknown-linux-musl --release
+RUN rm /usr/src/rust-cloud-run/target/x86_64-unknown-linux-musl/release/deps/runner*
+RUN rm /usr/src/rust-cloud-run/target/x86_64-unknown-linux-musl/release/runner*
 
 # Copy the changing code
 RUN rm src/*.rs
