@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  runner:
+    container_name: runner
+    image: ghcr.io/meck93/rust-cloud-run:latest
+    ports:
+      - 8080:8080
